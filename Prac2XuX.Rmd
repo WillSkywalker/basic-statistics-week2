@@ -1,0 +1,115 @@
+---
+title: "Practical 2"
+author: "Xu Xiao S3612406"
+date: "11/9/2018"
+output: html_document
+fig_caption: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Part A
+###1. Open Data
+####1a
+
+```{r}
+Practical1 <- readRDS(file="Practical1.rds")
+```
+
+
+
+###2. First calculations: descriptive statistics
+####2b
+```{r}
+table(Practical1$age)
+```
+16, 18, 20, 21, 22 and 24 are the most common ages in our dataset, all accured 3 times.
+
+###3. More descriptives: exploring frequencies
+####3a
+#####Mean
+```{r}
+mean(Practical1$profsc)
+```
+#####Median
+```{r}
+median(Practical1$profsc)
+```
+#####Mode
+```{r}
+which.max(tabulate(Practical1$profsc))
+```
+#####Standard deviation
+```{r}
+sd(Practical1$profsc)
+```
+
+
+####3b
+#####Minimum age
+```{r}
+min(Practical1$profsc)
+```
+#####Maximum age
+```{r}
+max(Practical1$age)
+```
+#####Mean age
+```{r}
+mean(Practical1$profsc)
+```
+#####Standard deviation of ages
+```{r}
+sd(Practical1$age)
+```
+
+
+####3c
+```{r}
+which.max(tabulate(Practical1$profsc))
+```
+The most frequently occurring proficiency score is 59.
+
+
+
+###4. Getting to know the data: realationships
+####4a/4b
+```{r figs, fig.cap="Figure 1. Scatterplot showing the relationship between Age of Acquisition and Proficiency."}
+plot(Practical1$age, Practical1$profsc, xlab="Age",ylab="Proficiency Score", main="Relationship between age of acquisition and L2 proficiency")
+```
+
+####4c
+Yes, from my point of view those two variables are negatively correlated.
+
+
+###5. Getting to know the data: comparing groups
+####5a
+```{r}
+aggregate(profsc~gender, Practical1, mean)
+aggregate(profsc~gender, Practical1, median)
+aggregate(profsc~gender, Practical1, range)
+aggregate(profsc~gender, Practical1, sd)
+```
+####5b
+Female participants have higner average and median proficiency scores.
+
+####5c
+The standard deviation of female participants' proficiency score 14.24212, lower than 16.51307 from the male group. Thus we can say the female group scored more homogeneously.
+
+####5d
+```{r fig.cap="Figure 2. Box Plot showing the difference between male and female participants."}
+boxplot(profsc ~ gender , data=Practical1, main="Proficiency Score of Male and Female participants", xlab="Gender", ylab="Proficiency Score")
+```
+
+####5e
+The boxplot shows maximum, minimum and quartiles of the data. The first and third quartiles are shown as upper and lower "side" of the box and the second quartile (which is also the median) is drawn in the box. Maximum and minimum are displayed as strokes at each end.
+
+
+
+##Part B
+####1a
+```{r}
+a = c(3, 4, 5, 6, 7, 8, 9)
+```
