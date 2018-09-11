@@ -105,7 +105,7 @@ boxplot(profsc ~ gender , data=Practical1, main="Proficiency Score of Male and F
 ```
 
 ####5e
-The boxplot shows maximum, minimum and quartiles of the data. The first and third quartiles are shown as upper and lower "side" of the box and the second quartile (which is also the median) is drawn in the box. Maximum and minimum are displayed as strokes at each end.
+The boxplot shows quartiles of the data. The first and third quartiles are shown as upper and lower "side" of the box and the second quartile (which is also the median) is drawn in the box.
 
 
 
@@ -164,6 +164,7 @@ Practical2 <- readRDS("Practical2.rds")
 str(Practical2)
 ```
 ###2. Descriptive statistics
+####2a
 ```{r}
 describe(Practical2$Proficiency)
 aggregate(Proficiency~Motivation, Practical2, mean)
@@ -177,10 +178,38 @@ which.max(tabulate(Practical2$Proficiency[Practical2$Motivation =='neutral']))
 which.max(tabulate(Practical2$Proficiency[Practical2$Motivation =='high']))
 which.max(tabulate(Practical2$Proficiency[Practical2$Motivation =='very high']))
 ```
+Figure 3. Table shows reports of proficiency score from different motivation groups.
+
 value | Overall | very low | low | neutral | high | very high
 - | - | - | - | - | - | -
 mean | 42.17 | 34.23 | 39.50 | 42.44 | 46.53 | 50.71
 mode | 25 | 19 | 24 | 28 | 29 | 36
 median | 37 | 30 | 34 | 37 | 42 | 49
 sd | 21.19 | 16.90 | 19.96 | 21.06 | 21.85 | 22.94
+
+####2b
+```{r fig.cap="Figure 4. Box Plot showing the difference between different motivation groups."}
+boxplot(Proficiency ~ Motivation , data=Practical2, main="Proficiency Score of Different Motivation Groups", xlab="Motivation", ylab="Proficiency Score")
+```
+
+Each group differs from each other in proficiency score; from motivation level "very low" to "very high", every quartile is increasing, means that general proficiency score increses with motivation.
+
+
+###3. Checking the normal distribution
+####3a
+```{r fig.cap="Figure 5. Histogram showing the distribution of proficiency scores."}
+hist(Practical2$Proficiency, prob=TRUE, xlab="Proficiency Score", main="Histogram of Proficiency Score")
+curve(dnorm(x, mean=mean(Practical2$Proficiency), sd=sd(Practical2$Proficiency)), add=TRUE)
+```
+
+####3b
+```{r}
+describe(Practical2$Proficiency)
+```
+//TODO: explanation
+
+####3c
+```{r}
+#TODO
+```
 
