@@ -138,6 +138,28 @@ When there are multiple maximum values, R would only pick one from them. If we n
 
 ##Part C
 ###1. Load the file into R
+####1a
 ```{r}
+Practical2 <- read.csv("Data-Practical2C.csv", head=TRUE, sep=";")
+str(Practical2)
+Practical2$Motivation <- as.ordered(Practical2$Motivation)
+Practical2$Motivation <- ordered(Practical2$Motivation,
+                                 levels=c(1,2,3,4,5),
+                                 labels=c("very low", "low", "neutral", "high", "very high"))
+Practical2$Education <- as.ordered(Practical2$Education)
+Practical2$Education <- ordered(Practical2$Education,
+                                levels=c(1,2,3,4,5),
+                                labels=c("did not complete high school", "high school degree", "some college", "college degree", "post-undergraduate"))
+Practical2$Internet <- as.factor(Practical2$Internet)
+Practical2$Internet <- factor(Practical2$Internet,
+                              levels=c(0,1,8,9),
+                              labels=c("no", "yes", "does not know", "no answer"))
 
+str(Practical2)
+```
+####1b
+```{r}
+saveRDS(Practical2, file="Practical2.rds")
+Practical2 <- readRDS("Practical2.rds")
+str(Practical2)
 ```
