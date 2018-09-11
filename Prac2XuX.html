@@ -354,6 +354,105 @@ str(Practical2)</code></pre>
 ##  $ Internet   : Factor w/ 4 levels &quot;no&quot;,&quot;yes&quot;,&quot;does not know&quot;,..: 1 1 1 1 1 2 1 1 1 2 ...</code></pre>
 </div>
 </div>
+<div id="descriptive-statistics" class="section level3">
+<h3>2. Descriptive statistics</h3>
+<pre class="r"><code>describe(Practical2$Proficiency)</code></pre>
+<pre><code>##    vars    n  mean    sd median trimmed   mad min max range skew kurtosis
+## X1    1 5200 42.17 21.19     37   40.09 20.76   9  98    89 0.76    -0.25
+##      se
+## X1 0.29</code></pre>
+<pre class="r"><code>aggregate(Proficiency~Motivation, Practical2, mean)</code></pre>
+<pre><code>##   Motivation Proficiency
+## 1   very low    34.23128
+## 2        low    39.50173
+## 3    neutral    42.44178
+## 4       high    46.52830
+## 5  very high    50.71035</code></pre>
+<pre class="r"><code>aggregate(Proficiency~Motivation, Practical2, median)</code></pre>
+<pre><code>##   Motivation Proficiency
+## 1   very low          30
+## 2        low          34
+## 3    neutral          37
+## 4       high          42
+## 5  very high          49</code></pre>
+<pre class="r"><code>aggregate(Proficiency~Motivation, Practical2, range)</code></pre>
+<pre><code>##   Motivation Proficiency.1 Proficiency.2
+## 1   very low             9            97
+## 2        low             9            98
+## 3    neutral             9            98
+## 4       high             9            98
+## 5  very high             9            98</code></pre>
+<pre class="r"><code>aggregate(Proficiency~Motivation, Practical2, sd)</code></pre>
+<pre><code>##   Motivation Proficiency
+## 1   very low    16.89581
+## 2        low    19.96060
+## 3    neutral    21.05699
+## 4       high    21.84818
+## 5  very high    22.94467</code></pre>
+<pre class="r"><code>which.max(tabulate(Practical2$Proficiency))</code></pre>
+<pre><code>## [1] 25</code></pre>
+<pre class="r"><code>which.max(tabulate(Practical2$Proficiency[Practical2$Motivation =='very low']))</code></pre>
+<pre><code>## [1] 19</code></pre>
+<pre class="r"><code>which.max(tabulate(Practical2$Proficiency[Practical2$Motivation =='low']))</code></pre>
+<pre><code>## [1] 24</code></pre>
+<pre class="r"><code>which.max(tabulate(Practical2$Proficiency[Practical2$Motivation =='neutral']))</code></pre>
+<pre><code>## [1] 28</code></pre>
+<pre class="r"><code>which.max(tabulate(Practical2$Proficiency[Practical2$Motivation =='high']))</code></pre>
+<pre><code>## [1] 29</code></pre>
+<pre class="r"><code>which.max(tabulate(Practical2$Proficiency[Practical2$Motivation =='very high']))</code></pre>
+<pre><code>## [1] 36</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th>value</th>
+<th>Overall</th>
+<th>very low</th>
+<th>low</th>
+<th>neutral</th>
+<th>high</th>
+<th>very high</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>mean</td>
+<td>42.17</td>
+<td>34.23</td>
+<td>39.50</td>
+<td>42.44</td>
+<td>46.53</td>
+<td>50.71</td>
+</tr>
+<tr class="even">
+<td>mode</td>
+<td>25</td>
+<td>19</td>
+<td>24</td>
+<td>28</td>
+<td>29</td>
+<td>36</td>
+</tr>
+<tr class="odd">
+<td>median</td>
+<td>37</td>
+<td>30</td>
+<td>34</td>
+<td>37</td>
+<td>42</td>
+<td>49</td>
+</tr>
+<tr class="even">
+<td>sd</td>
+<td>21.19</td>
+<td>16.90</td>
+<td>19.96</td>
+<td>21.06</td>
+<td>21.85</td>
+<td>22.94</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 
 

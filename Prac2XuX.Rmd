@@ -163,3 +163,24 @@ saveRDS(Practical2, file="Practical2.rds")
 Practical2 <- readRDS("Practical2.rds")
 str(Practical2)
 ```
+###2. Descriptive statistics
+```{r}
+describe(Practical2$Proficiency)
+aggregate(Proficiency~Motivation, Practical2, mean)
+aggregate(Proficiency~Motivation, Practical2, median)
+aggregate(Proficiency~Motivation, Practical2, range)
+aggregate(Proficiency~Motivation, Practical2, sd)
+which.max(tabulate(Practical2$Proficiency))
+which.max(tabulate(Practical2$Proficiency[Practical2$Motivation =='very low']))
+which.max(tabulate(Practical2$Proficiency[Practical2$Motivation =='low']))
+which.max(tabulate(Practical2$Proficiency[Practical2$Motivation =='neutral']))
+which.max(tabulate(Practical2$Proficiency[Practical2$Motivation =='high']))
+which.max(tabulate(Practical2$Proficiency[Practical2$Motivation =='very high']))
+```
+value | Overall | very low | low | neutral | high | very high
+- | - | - | - | - | - | -
+mean | 42.17 | 34.23 | 39.50 | 42.44 | 46.53 | 50.71
+mode | 25 | 19 | 24 | 28 | 29 | 36
+median | 37 | 30 | 34 | 37 | 42 | 49
+sd | 21.19 | 16.90 | 19.96 | 21.06 | 21.85 | 22.94
+
